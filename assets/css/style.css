@@ -3,14 +3,16 @@
 }
 
 body {
-    background: #fc4856;
+    background: #21291c;
+    /* background: #3e3e3e; */
 }
 
 .container {
     height: 100vh;
     padding: 20px;
-    margin: 20px auto;
-    background: #fffdaf;
+    margin: 25px auto;
+    /* background: #3e3e3e; */
+    background: black;
     display: flexbox;
 }
 
@@ -23,9 +25,11 @@ body {
 
 
 button {
-    background-color: #fc6666;
-    color: whitesmoke;
-    border: solid 3px #ffcb08;
+    background-color: black;
+    /* color: whitesmoke; */
+    color: #ffcb08;
+    /* border: solid 1.5px #ffcb08; */
+    border: solid 1.5px #3e3e3e;
     margin: 5px 20px;
     border-radius: 25px;
     padding: 6px 8px;

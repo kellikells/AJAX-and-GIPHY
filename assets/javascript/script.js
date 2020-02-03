@@ -14,6 +14,7 @@ for (let i = 0; i < topics.length; i++) {
     // myButton.addClass("button-container");
     myButton.text(topics[i]);
     myButton.attr("data-topic", topics[i]);
+    
 
     //------putting buttons on DOM-----
     $(".button-container").append(myButton);
@@ -27,7 +28,8 @@ $("button").on("click", function () {
     //---use the "data-topic" to get the button text
     var tvShow = $(this).attr("data-topic");
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=d20zgadSnjTzFYdOaeNTybFyDwS0MmISq=" + tvShow + "&limit=10&lang=en";
+    // ----host + search + apiKey + other parameters ----
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tvShow + "&api_key=d20zgadSnjTzFYdOaeNTybFyDwS0MmIS" + "&limit=10&lang=en";
 
     $.ajax({
         url: queryURL,
@@ -47,8 +49,6 @@ $("button").on("click", function () {
             console.log(resultsArray.length);      //logs the number of gifs returned from AJAX call
                         console.log(theRating);     //checking variables are working
 
-
-            var theTitle = singleGif.title;
             var theRating = singleGif.rating;
             var theStill = singleGif.images.fixed_height_small_still.url;
             var theMp4 = singleGif.images.fixed_height_small.mp4;
@@ -59,6 +59,8 @@ $("button").on("click", function () {
                 "data-still": theStill,
                 "data-animate": theMp4
             });
+
+
 
             var imageRating = $("<p>").text(theRating);
 
