@@ -16,7 +16,8 @@ for (let i = 0; i < topics.length; i++) {
     myButton.attr("data-topic", topics[i]);
 
     //------putting buttons on DOM-----
-    $(".buttonWrapper").append(myButton);
+    $(".button-container").append(myButton);
+
 }
 
 //============= FUNCTION: BUTTON ON CLICK ===============
@@ -45,15 +46,20 @@ $("button").on("click", function () {
             var theTitle = resultsArray[x].title;
             console.log(theTitle);      //checking to see it logs all 10 titles, it works
             var theRating = resultsArray[x].rating;
-            var theStill = resultsArray[x].images.fixed_height_small_still;
-            var theMp4 = resultsArray[x].images.fixed_height_small;
+            var theStill = resultsArray[x].images.fixed_height_small_still.url;
+            var theMp4 = resultsArray[x].images.fixed_height_small.mp4;
 
-            //=========== Appending these to DOM ================
-            // var imageElement = $("<img " + "src=" + theStill + " data-still=" + theStill + " data-animate=" + theMp4 + "data-state= still>")
+            //=========== <img> and <p: rating>  to DOM ================
+            var gifContainer = $("<img>").attr({
+                "src": theStill,
+                "data-still": theStill,
+                "data-animate": theMp4
+            });
             var imageRating = $("<p>" + theRating + "</p>");
-
-            imageContainer.append(imageRating);
-
+            //-----attach the rating to the img-----
+            gifContainer.append(imageRating);
+            //------
+            $(".image-container").append(gifContainer);
         }
     });
 
