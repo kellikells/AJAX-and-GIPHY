@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background: #fc4856;
+}
+
 .container {
     height: 100vh;
     padding: 20px;
@@ -13,8 +17,8 @@
 .button-container {
     width: 100%;
     margin: 0 auto;
-    display: flex;
-    /* border: thick double 2px yellow; */
+    display: flexbox;
+ 
 }
 
 
@@ -24,7 +28,9 @@ button {
     border: solid 3px #ffcb08;
     margin: 5px 20px;
     border-radius: 25px;
-    padding: 5px 6px;
+    padding: 6px 8px;
+    /* display: inline-flex; */
+    /* flex-wrap: wrap; */
 }
 
 footer {
