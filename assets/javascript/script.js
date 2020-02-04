@@ -1,16 +1,26 @@
 
-var topics = ['Naruto', 'The' + ' office', 'Rick' + ' and' + ' Morty', 'Friends'];
+var topics = ['Naruto', 'The' + ' Office', 'Rick and Morty', 'Friends'];
 
 var imageContainer = $(".image-container");
 
+//=========== FUNCTION: USER INPUT SUBMITTED =========
+//----------------------------------------------------
 
+$("#tv-search").on("click", function(event) {
+    event.preventDefault();
+    var userTV = $("#userInput").val();
+    console.log(userTV);
+    topics.push(userTV);
+    createButtons();
+});
 
-// LOOP: through topics array & build buttons on DOM
-// =====================================================
+//=== FUNCTION: make buttons, ajax call, button click, image click ======
+//-----------------------------------------------------
 function createButtons() {
-    
+
     $(".button-container").empty();
 
+    // LOOP: through topics array & build buttons on DOM
     for (let i = 0; i < topics.length; i++) {
 
         var myButton = $("<button>")
@@ -23,92 +33,80 @@ function createButtons() {
         //------putting buttons on DOM-----
         $(".button-container").append(myButton);
     }
-}
 
+    //============= FUNCTION: BUTTON ON CLICK ===============
+    //--------------------------------------------------------
+    $("button").on("click", function () {
 
-//=========== FUNCTION: USER INPUT SUBMITTED =========
-//----------------------------------------------------
+        $(".image-container").empty();
 
-// getting the input from the form
+        //---use the "data-topic" to get the button text
+        var tvShow = $(this).attr("data-topic");
 
+        // ----host + search + apiKey + other parameters ----
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tvShow + "&api_key=d20zgadSnjTzFYdOaeNTybFyDwS0MmIS" + "&limit=10&lang=en";
 
-$("#tv-search").on("click"), function (event) {
-    event.preventDefault();
-    var userTV = $("#userInput").val();
-    topics.push(userTV);
-    createButtons();
-}
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);    // logging the resulting object
 
-//============= FUNCTION: BUTTON ON CLICK ===============
-//--------------------------------------------------------
-$("button").on("click", function () {
-    $(".image-container").empty();
-    //---use the "data-topic" to get the button text
-    var tvShow = $(this).attr("data-topic");
+            var resultsArray = response.data;
 
-    // ----host + search + apiKey + other parameters ----
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tvShow + "&api_key=d20zgadSnjTzFYdOaeNTybFyDwS0MmIS" + "&limit=10&lang=en";
+            //==============LOOP through GIFs==================
+            //---------GIF info: title, rating, small-still, small-mp4
+            //------------------------------------------------
+            for (let x = 0; x < resultsArray.length; x++) {
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);    // logging the resulting object
+                var gifInfo = resultsArray[x];
+                var theRating = gifInfo.rating;
+                var theStill = gifInfo.images.fixed_height_small_still.url;
+                var theMp4 = gifInfo.images.fixed_height_small.url;
 
-        var resultsArray = response.data;
+                console.log(resultsArray.length);      //logs the number of gifs returned from AJAX call
+                console.log(theRating);     //checking variables are working
 
-        //==============LOOP through GIFs==================
-        //---------GIF info: title, rating, small-still, small-mp4
-        //------------------------------------------------
-        for (let x = 0; x < resultsArray.length; x++) {
-
-            var gifInfo = resultsArray[x];
-            var theRating = gifInfo.rating;
-            var theStill = gifInfo.images.fixed_height_small_still.url;
-            var theMp4 = gifInfo.images.fixed_height_small.url;
-
-            console.log(resultsArray.length);      //logs the number of gifs returned from AJAX call
-            console.log(theRating);     //checking variables are working
-
-            //-------variables connected to DOM---------
-            var theGifContainer = $("<figure>");
-            var theGifRating = $("<figcaption>").text("Rating: " + theRating);
-            var theGifImage = $("<img>").attr({
-                "src": theStill,
-                "data-still": theStill,
-                "data-animate": theMp4,
-                "rating": theRating,
-                "data-state": "still"
-            });
-            theGifContainer.append(theGifImage, theGifRating);
-
-            // finally connecting it to DOM
-            $(".image-container").append(theGifContainer);
-        }
-
-        // ========= FUNCTION: IMAGE ON CLICK ===========
-        // ----------------------------------------------
-        $("img").on("click", function () {
-            var state = $(this).attr("data-state");
-            var stillState = $(this).attr("data-still");
-            var animateState = $(this).attr("data-animate");
-
-            if (state === "still") {
-                $(this).attr({
-                    "src": animateState,
-                    "data-state": "animate"
-                });
-            }
-            else {
-                $(this).attr({
-                    "src": stillState,
+                //-------variables connected to DOM---------
+                var theGifContainer = $("<figure>");
+                var theGifRating = $("<figcaption>").text("Rating: " + theRating);
+                var theGifImage = $("<img>").attr({
+                    "src": theStill,
+                    "data-still": theStill,
+                    "data-animate": theMp4,
+                    "rating": theRating,
                     "data-state": "still"
                 });
-            }
-        });
+                theGifContainer.append(theGifImage, theGifRating);
 
+                // finally connecting it to DOM
+                $(".image-container").append(theGifContainer);
+            }
+
+            // ========= FUNCTION: IMAGE ON CLICK ===========
+            // ----------------------------------------------
+            $("img").on("click", function () {
+                var state = $(this).attr("data-state");
+                var stillState = $(this).attr("data-still");
+                var animateState = $(this).attr("data-animate");
+
+                if (state === "still") {
+                    $(this).attr({
+                        "src": animateState,
+                        "data-state": "animate"
+                    });
+                }
+                else {
+                    $(this).attr({
+                        "src": stillState,
+                        "data-state": "still"
+                    });
+                }
+            });
+
+        });
     });
-});
+}
 
 createButtons();
 
