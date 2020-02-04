@@ -1,8 +1,10 @@
 
 
-var topics = ['Naruto', 'Marvel', 'Looney' + ' Tunes', 'Friends'];
+var topics = ['Naruto', 'The' + ' office', 'Rick' + ' and' + ' Morty', 'Friends'];
 
 var imageContainer = $(".image-container");
+
+var theRating;
 
 // LOOP: through topics array & build buttons on DOM
 // =====================================================
@@ -14,12 +16,14 @@ for (let i = 0; i < topics.length; i++) {
     // myButton.addClass("button-container");
     myButton.text(topics[i]);
     myButton.attr("data-topic", topics[i]);
-    
+
 
     //------putting buttons on DOM-----
     $(".button-container").append(myButton);
 
 }
+
+
 
 //============= FUNCTION: BUTTON ON CLICK ===============
 //--------------------------------------------------------
@@ -44,43 +48,37 @@ $("button").on("click", function () {
         //------------------------------------------------
         for (let x = 0; x < resultsArray.length; x++) {
 
-            var singleGif = resultsArray[x];
+            var gifInfo = resultsArray[x];
+            var theRating = gifInfo.rating;
+            var theStill = gifInfo.images.fixed_height_small_still.url;
+            var theMp4 = gifInfo.images.fixed_height_small.mp4;
 
             console.log(resultsArray.length);      //logs the number of gifs returned from AJAX call
-                        console.log(theRating);     //checking variables are working
+            console.log(theRating);     //checking variables are working
 
-            var theRating = singleGif.rating;
-            var theStill = singleGif.images.fixed_height_small_still.url;
-            var theMp4 = singleGif.images.fixed_height_small.mp4;
-
-            //=========== <img> and <p: rating>  to DOM ================
-            var gifContainer = $("<img>").attr({
+            //-------variables connected to DOM---------
+            var theGifContainer = $("<div>");
+            var theGifRating = $("<p>").text("Rating: " + theRating);
+            var theGifImage = $("<img>").attr({
                 "src": theStill,
                 "data-still": theStill,
-                "data-animate": theMp4
+                "data-animate": theMp4,
+                "rating": theRating
             });
 
-
-
-            var imageRating = $("<p>").text(theRating);
-
-            console.log(imageRating);
-            //-----attach the rating to the img-----
-            gifContainer.append(imageRating);
-            //------
-            $(".image-container").append(gifContainer);
+            theGifContainer.append(theGifImage, theRating);
+            $(".image-container").append(theGifImage);      // finally connecting it to DOM
         }
     });
+});
 
 
-})
 
 
 // $(".topics").on('click', function() {
 //     var x = $()}
 
 
-// THIS IS FOR THE INPUT FIELD FOR USER
 
 
 
