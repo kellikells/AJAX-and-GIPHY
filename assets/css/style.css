@@ -18,7 +18,6 @@ body {
     width: 100%;
     margin: 0 auto;
     display: flexbox;
- 
 }
 
 
@@ -32,14 +31,28 @@ button {
     font-size: 20px;
 }
 
+
+.image-container {
+    padding: 10px;
+    
+
+    /* this is done by bootstrap by changing the class of image-container
+    display: flex;
+    flex-wrap: wrap; */
+}
+
+figure {
+    padding-right: 10px;
+}
+
 figcaption {
     color: #389;
 }
 
 footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    /* position: fixed; */
+    /* left: 0;
+    bottom: 0; */
     width: 100%;
     text-align: center;
 }
