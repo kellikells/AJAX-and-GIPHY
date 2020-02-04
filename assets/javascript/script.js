@@ -1,10 +1,7 @@
 
-
 var topics = ['Naruto', 'The' + ' office', 'Rick' + ' and' + ' Morty', 'Friends'];
 
 var imageContainer = $(".image-container");
-
-var theRating;
 
 // LOOP: through topics array & build buttons on DOM
 // =====================================================
@@ -17,13 +14,9 @@ for (let i = 0; i < topics.length; i++) {
     myButton.text(topics[i]);
     myButton.attr("data-topic", topics[i]);
 
-
     //------putting buttons on DOM-----
     $(".button-container").append(myButton);
-
 }
-
-
 
 //============= FUNCTION: BUTTON ON CLICK ===============
 //--------------------------------------------------------
@@ -57,8 +50,8 @@ $("button").on("click", function () {
             console.log(theRating);     //checking variables are working
 
             //-------variables connected to DOM---------
-            var theGifContainer = $("<div>");
-            var theGifRating = $("<p>").text("Rating: " + theRating);
+            var theGifContainer = $("<figure>");
+            var theGifRating = $("<figcaption>").text("Rating: " + theRating);
             var theGifImage = $("<img>").attr({
                 "src": theStill,
                 "data-still": theStill,
@@ -66,8 +59,8 @@ $("button").on("click", function () {
                 "rating": theRating
             });
 
-            theGifContainer.append(theGifImage, theRating);
-            $(".image-container").append(theGifImage);      // finally connecting it to DOM
+            theGifContainer.append(theGifImage, theGifRating);
+            $(".image-container").append(theGifContainer);      // finally connecting it to DOM
         }
     });
 });

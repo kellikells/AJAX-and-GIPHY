@@ -8,12 +8,10 @@ body {
 }
 
 .container {
-    height: 100vh;
+    min-height: 100vh;
     padding: 20px;
     margin: 25px auto;
-    /* background: #3e3e3e; */
     background: black;
-    display: flexbox;
 }
 
 .button-container {
@@ -26,15 +24,16 @@ body {
 
 button {
     background-color: black;
-    /* color: whitesmoke; */
     color: #ffcb08;
-    /* border: solid 1.5px #ffcb08; */
-    border: solid 1.5px #3e3e3e;
+    border: solid 2.5px #3e3e3e;
     margin: 5px 20px;
     border-radius: 25px;
     padding: 6px 8px;
-    /* display: inline-flex; */
-    /* flex-wrap: wrap; */
+    font-size: 20px;
+}
+
+figcaption {
+    color: #389;
 }
 
 footer {
