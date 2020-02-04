@@ -27,25 +27,47 @@
 <body>
 
     <div class='container'>
-        <div class='button-container'>
+        <div class='row'>
+            <div class='col'>
+                <!------------ BUTTONS ------------->
+                <div class='button-container'>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-9'>
+                <!------------ GIFS ------------->
+                <!-- bootstrap: d-flex flex-wrap -->
+                <div class='image-container d-flex flex-wrap'>
+                </div>
+            </div>
+            <!----------- FORM: SEARCH AND ADD  ------------>
+            <div class='col-3'>
+                <form>
+                    <label for='userInput'>TV show search:</label>
+                    <input type='text' id='userInput'>
+                    <br>
+                    <input id='tv-search' type='submit' value='try it!'>
+                </form>
+            </div>
         </div>
 
-        <!-- bootstrap: d-flex flex-wrap -->
-        <div class='image-container d-flex flex-wrap'>
+        <div class='row'>
+            <div class='col'>
+                <!------------ FOOTER ------------->
+                <!-- bootstrap: fixed-bottom -->
+                <div class="fixed-bottom">
+                    <footer>
+                        <img src='assets/images/Giphy Attribution Marks/Animated Logos/PoweredBy_200_Horizontal_Light-Backgrounds_With_Logo.gif'
+                            alt='giphy attribution animated logo'>
+                    </footer>
+                </div>
+            </div>
         </div>
-
-        <!-- bootstrap: fixed-bottom -->
-        <div class="fixed-bottom">
-            <footer>
-                <img src='assets/images/Giphy Attribution Marks/Animated Logos/PoweredBy_200_Horizontal_Light-Backgrounds_With_Logo.gif'
-                    alt='giphy attribution animated logo'>
-            </footer>
-        </div>
-        
     </div>
 
-   <!-- jquery script -->
-   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <!-- jquery script -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
     <!-- my javascript  -->
     <script type='text/javascript' src='assets/javascript/script.js'></script>

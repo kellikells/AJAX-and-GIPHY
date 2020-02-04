@@ -35,7 +35,6 @@ button {
 .image-container {
     padding: 10px;
     
-
     /* this is done by bootstrap by changing the class of image-container
     display: flex;
     flex-wrap: wrap; */
@@ -46,6 +45,10 @@ figure {
 }
 
 figcaption {
+    color: #389;
+}
+
+label {
     color: #389;
 }
 
