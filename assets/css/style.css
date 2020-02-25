@@ -16,10 +16,9 @@ body {
 
 .button-container {
     width: 100%;
-    margin: 0 auto;
+    margin: 10px auto 20px;
     display: flexbox;
 }
-
 
 button {
     background-color: black;
@@ -31,7 +30,6 @@ button {
     font-size: 20px;
 }
 
-
 .image-container {
     padding: 10px;
     
@@ -41,7 +39,7 @@ button {
 }
 
 figure {
-    padding-right: 10px;
+    padding: 10px 30px 10px 5px;
 }
 
 figcaption {
@@ -59,3 +57,25 @@ footer {
     width: 100%;
     text-align: center;
 }
+
+#giphy-logo {
+    box-shadow: none;
+}
+
+
+/*========== ANIMATION/EFFECTS ========== */
+button:hover {
+    background-color: #3e3e3e;
+    border: 3px solid #ffcb08;
+    /* border-radius: 25px; */
+}
+
+button:active{
+    background-color: #3e3e3e;
+    border: 3px solid #ffcb08;
+}
+
+img:hover {
+    box-shadow: 10px -10px 10px #798, -10px -10px 10px #798;    
+}
+

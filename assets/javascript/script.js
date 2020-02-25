@@ -32,11 +32,12 @@ function createButtons() {
 
         //------putting buttons on DOM-----
         $(".button-container").append(myButton);
-    }
+    }}
 
-    //============= FUNCTION: BUTTON ON CLICK ===============
+    //============= FUNCTION: BUTTON ON CLICK ======
+    // event: bubbling
     //--------------------------------------------------------
-    $("button").on("click", function () {
+    $(".button-container").on("click","button", function () {
 
         $(".image-container").empty();
 
@@ -106,7 +107,7 @@ function createButtons() {
 
         });
     });
-}
+
 
 createButtons();
 
