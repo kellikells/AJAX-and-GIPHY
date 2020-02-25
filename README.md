@@ -10,3 +10,9 @@ Components:
 Extra features:
 -hovering techniques
 -working with Bootstrap styles for responsive visual behavior (flexwrap)
+
+link to deployed project: https://kellikells.github.io/AJAX-and-GIPHY/
+assets/images/playing_naruto.jpg
+![overall start](assets/images/overall.jpg)
+![clicked existing link](assets/images/playing_naruto.jpg)
+![user input added](assets/images/playing_user_input.jpg)
